@@ -19,7 +19,7 @@
   * Secure password storage using Bcrypt for hashing.
 
 
-### API Endpoint
+## 🌐 API Endpoint 🔌
 Provides several API for user authentication and authorization
 http://localhost:3000/api
 
