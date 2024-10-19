@@ -19,3 +19,13 @@
   * Secure password storage using Bcrypt for hashing.
 
 
+### API Endpoint
+Provides several API for user authentication and authorization
+http://localhost:3000/api
+
+| Method | Path                  | Description                                         |
+|--------|-----------------------|-----------------------------------------------------|
+| POST   | /users/signup         | Create the new Users                                | 
+| POST   | /users/login          | Login with email and password                       |
+| PUT    | /users/updateusers    | Update user profile fname, lname, gender            |
+| PUT    | /users/updatepassword | Update password using old password and new password |
