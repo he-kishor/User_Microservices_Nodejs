@@ -1,6 +1,7 @@
 
 const  {registerUser, loginuser, updateuser,updatePassword} = require('../services/user_service');
 const errorHandler = require('../../../Shared/errorHandler');
+const {user_forgotPassword } = require('../services/forgotPassword');
 //user register
 
 const user_register = async (req, res) => {
@@ -52,4 +53,5 @@ const  update_password = async(req,res)=>{
     }
 };
 
+// const forgot_password
 module.exports ={user_register, login_user, update_user, update_password};
