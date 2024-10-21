@@ -80,7 +80,6 @@ const updateuser = async(id,body) =>{
 
             {
                 $set:{
-                    email:email,
                     fname:fname,
                     lname:lname,
                     gender:gender
