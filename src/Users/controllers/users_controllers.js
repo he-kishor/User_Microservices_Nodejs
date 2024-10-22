@@ -1,7 +1,8 @@
 
 const  {registerUser, loginuser, updateuser,updatePassword} = require('../services/user_service');
+const { user_forgotpassword, user_resetPassword} = require('../services/forgotPassword');
 const errorHandler = require('../../../Shared/errorHandler');
-const {user_forgotPassword } = require('../services/forgotPassword');
+
 //user register
 
 const user_register = async (req, res) => {
@@ -54,4 +55,30 @@ const  update_password = async(req,res)=>{
 };
 
 // const forgot_password
-module.exports ={user_register, login_user, update_user, update_password};
+const forgot_password = async(req,res)=>{
+    try{
+    const email = req.body.email;
+    if(!email){
+        res.status(400).json({message:"Provide email"});
+    }
+    const response = await user_forgotpassword(email);
+    res.status(200).json(response)
+   }
+   catch(error){
+        errorHandler(res,error);
+   }
+};
+
+const reset_password = async(req,res)=>{
+    try{
+        const { email, new_password, confirm_password, otp } = req.body;
+        const response = await user_resetPassword({ email, new_password, confirm_password, otp });
+        return res.status(200).json(response);
+
+    }
+    catch(error){
+        errorHandler(res,error);
+    }
+}
+
+module.exports ={user_register, login_user, update_user, update_password, forgot_password, reset_password};
