@@ -20,12 +20,14 @@
 
 
 ## 🌐 API Endpoint 🔌
-Provides several API for user authentication and authorization
+Provides several APIs for user authentication and authorization
 http://localhost:3000/api
 
-| Method | Path                  | Description                                         |
-|--------|-----------------------|-----------------------------------------------------|
-| POST   | /users/signup         | Create the new Users                                | 
-| POST   | /users/login          | Login with email and password                       |
-| PUT    | /users/updateusers    | Update user profile fname, lname, gender            |
-| PUT    | /users/updatepassword | Update password using old password and new password |
+| Method | Path                    | Description                                                                                      | Authenticate    |
+|--------|-------------------------|--------------------------------------------------------------------------------------------------|-----------------|
+| POST   | /users/signup           | Create the new Users                                                                             |  False          |
+| POST   | /users/login            | Login with email and password                                                                    |  False          |
+| PUT    | /users/updateusers      | Update user profile fname, lname, gender                                                         |  True           |
+| PUT    | /users/updatepassword   | Update password using old password and new password                                              |  True           |
+| POST   | /users/forgotpasswords  | When the user requests a forgotten password then it sends the OTP mail, to verify the user       |  False          |
+| POST   | /users/resetpasswordotps| Once the user receives the otp then he requests otp with a new password it validates and updates |  False          |
