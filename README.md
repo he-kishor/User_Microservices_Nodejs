@@ -31,3 +31,4 @@ http://localhost:3000/api
 | PUT    | /users/updatepassword   | Update password using old password and new password                                              |  True           |
 | POST   | /users/forgotpasswords  | When the user requests a forgotten password then it sends the OTP mail, to verify the user       |  False          |
 | POST   | /users/resetpasswordotps| Once the user receives the otp then he requests otp with a new password it validates and updates |  False          |
+| PUT    | /users/updatemobile     | if the user wants to update the mobile number or set the mobile number                           |  True           |
