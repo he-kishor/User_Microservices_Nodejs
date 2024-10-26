@@ -32,3 +32,28 @@ http://localhost:3000/api
 | POST   | /users/forgotpasswords  | When the user requests a forgotten password then it sends the OTP mail, to verify the user       |  False          |
 | POST   | /users/resetpasswordotps| Once the user receives the otp then he requests otp with a new password it validates and updates |  False          |
 | PUT    | /users/updatemobile     | if the user wants to update the mobile number or set the mobile number                           |  True           |
+
+
+## 🛡️ Refreshing an Expired Access Token
+
+```plaintext
+  |        |--(A)------- Authorization Grant --------->|               |
+  |        |                                           |               |
+  |        |<-(B)----------- Access Token -------------|               |
+  |        |               & Refresh Token             |               |
+  |        |                                           |               |
+  |        |                            +----------+   |               |
+  |        |--(C)---- Access Token ---->|          |   |               |
+  |        |                            |          |   |               |
+  |        |<-(D)- Protected Resource --| Resource |   | Authorization |
+  | Client |                            |  Server  |   |     Server    |
+  |        |--(E)---- Access Token ---->|          |   |               |
+  |        |                            |          |   |               |
+  |        |<-(F)- Invalid Token Error -|          |   |               |
+  |        |                            +----------+   |               |
+  |        |                                           |               |
+  |        |--(G)----------- Refresh Token ----------->|               |
+  |        |                                           |               |
+  |        |<-(H)----------- Access Token -------------|               |
+  |        |         & Optional Refresh Token          |               |
+```
