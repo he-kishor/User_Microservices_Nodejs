@@ -21,6 +21,7 @@ const UserSchema = new mongoose.Schema({
 
   resetPasswordOtp: { type: String }, // Stores the OTP
   otpExpires: { type: Date },         // Expiration time for the OTP
+  refreshToken: {type:String}
 
 }, { timestamps: true });  // Automatically adds createdAt and updatedAt fields
     
