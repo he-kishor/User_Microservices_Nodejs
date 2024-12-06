@@ -1,6 +1,7 @@
 
 const  {registerUser, loginuser, updateuser,updatePassword} = require('../services/user_service');
 const { user_forgotpassword, user_resetPassword} = require('../services/forgotPassword');
+const  { update_mobilenumber } =require('../services/mobileNumberServices')
 const errorHandler = require('../../../Shared/errorHandler');
 
 //user register
@@ -81,4 +82,23 @@ const reset_password = async(req,res)=>{
     }
 }
 
-module.exports ={user_register, login_user, update_user, update_password, forgot_password, reset_password};
+// mobile number
+ const update_MobileNuber = async(req,res)=>{
+   try{
+    mobilenumber = req.body.mobilenumber;
+    if (!mobilenumber){
+        return res.status(400).json({message:"Mobile Number is not Provided"});
+
+    }
+    const id =  req.userid;
+    const response = await update_mobilenumber(id,mobilenumber);
+    return res.status(200).json(response);
+
+    }
+    catch(error){
+       errorHandler(res,error) ;
+    }
+
+
+ }
+module.exports ={user_register, login_user, update_user, update_password, forgot_password, reset_password, update_MobileNuber};
