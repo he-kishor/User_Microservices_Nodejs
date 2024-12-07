@@ -3,9 +3,9 @@ const UserSchema = new mongoose.Schema({
   fname: { type: String, required: true },
   lname: { type: String, required: true },
   email: { type: String,  unique: true },
-  pass: { type: String, required: true },
-  role: { type: String, required: true },
-  gender: { type: String, required: true },
+  pass: { type: String },
+  role: { type: String},
+  gender: { type: String },
   passwordChangedAt: { type: Date },  // Field for storing password change timestamp
   lastLoginAt: { type: Date },         // Field for storing last login timestamp
   mobilenumber: { 
