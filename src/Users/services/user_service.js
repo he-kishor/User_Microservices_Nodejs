@@ -58,10 +58,11 @@ const loginuser =async({email,pass})=>{
         );
     return {
         //response the json object to make all kind api helpful
-        message:"Login Successfully",
+        
         token,
-        refreshTokenn,
+       
         user:{
+            message:"Login Successfully",
             u_id:user_up ._id,
             email:user_up .email,
             fname:user_up .fname,

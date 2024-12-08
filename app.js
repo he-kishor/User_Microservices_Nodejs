@@ -7,6 +7,7 @@ const session =require('express-session');
 const passport = require('passport');
 const cors = require('cors');
 require('./src/Users/services/passport');
+const cookieParser = require("cookie-parser");
 //app start
 const app=express();
 
@@ -14,6 +15,12 @@ const app=express();
 app.use(express.json());
 app.use(logger);
 
+
+app.use(cookieParser()) //Midleware to parse cookies
+const allowedOrigins = [
+  'http://localhost:3000',
+  'https://taskmanageapp-production.up.railway.app'
+];
 app.use(
     cors({
       origin: (origin, callback) => {

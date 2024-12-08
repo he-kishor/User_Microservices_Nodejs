@@ -21,9 +21,18 @@ router.get(
   passport.authenticate('google', { failureRedirect: '/' }),
   (req, res) => {
     const { user, token } = req.user;
+
+    const maxAge = 24 * 60 * 60 * 1000;
+  
+      res.cookie('authToken', token, {
+        httpOnly: true, // Prevent client-side access
+        secure: process.env.NODE_ENV === 'production', // Use secure cookies in production
+        sameSite: 'strict', // Helps prevent CSRF
+        maxAge: maxAge, // Expiration in milliseconds
+    });
     res.json({
       message: 'Login Successfully',
-      token,
+      
       user: {
         u_id: user._id,
         email: user.email,

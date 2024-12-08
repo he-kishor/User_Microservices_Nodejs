@@ -19,8 +19,17 @@ try {
 const login_user=async(req,res)=>{
   try{
     const loginresponse = await loginuser(req.body);
-    res.status(201).json(loginresponse);
-        
+    const maxAge = 24 * 60 * 60 * 1000;
+  
+      res.cookie('authToken', loginresponse.token, {
+        httpOnly: true, // Prevent client-side access
+        secure: process.env.NODE_ENV === 'production', // Use secure cookies in production
+        sameSite: 'strict', // Helps prevent CSRF
+        maxAge: maxAge, // Expiration in milliseconds
+    });
+      
+      res.status(201).json(loginresponse.user);
+          
        
     }
     catch(error){
