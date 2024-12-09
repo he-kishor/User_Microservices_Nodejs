@@ -24,6 +24,7 @@ passport.use(
                     lname:profile._json.family_name,
                     email:profile._json.email,
                     googleId:profile.id,
+                    role:"user"
                 });
             }
             
