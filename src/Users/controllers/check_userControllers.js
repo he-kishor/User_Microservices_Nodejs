@@ -1,5 +1,5 @@
 const errorHandler = require('../../../Shared/errorHandler');
-const check_user = require('../services/check_authenticate');
+const {check_user, loginuser} = require('../services/check_authenticate');
 
 const checkuser = async(req,res)=>{
     try{
@@ -12,5 +12,18 @@ const checkuser = async(req,res)=>{
     }
 
 };
-
-module.exports ={checkuser}
+const apilogin_user=async(req,res)=>{
+    try{
+      const loginresponse = await loginuser(req.body);
+     
+    
+        
+        res.status(201).json(loginresponse.user);
+            
+         
+      }
+      catch(error){
+          errorHandler (res,error);
+     }
+}
+module.exports ={checkuser, apilogin_user}
